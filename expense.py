@@ -26,4 +26,33 @@ def getAllExpenses():
 
 def searchExpenses(expenseID):
     expenses = loadExpenses()
-    
+    for e in expenses:
+        if e["id"] == expenseID:
+            return e
+        expensesNotFound()
+
+def updateExpense(title, amount, category, expenseID):
+    expenses = loadExpenses()
+
+    for e in expenses:
+        if e["id"] == expenseID:
+            e["title"] = validateTitle(title)
+            e["amount"] = validateAmout(amount)
+            e["category"] = validateCategory(category)
+            e["date"] = date.today().isoformat()
+            saveExpenses(expenses)
+
+            return e
+        
+    expensesNotFound()
+
+def deleteExpense(expenseID):
+    expenses = loadExpenses()
+
+    for  e in enumerate(expenses):
+        if e["id"] == expenseID:
+            del expenses[i]
+            saveExpenses(expenses)
+            return e
+
+    expensesNotFound()
