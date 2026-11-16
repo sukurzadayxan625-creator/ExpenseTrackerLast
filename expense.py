@@ -51,7 +51,7 @@ def deleteExpense(expenseID):
 
     for  e in enumerate(expenses):
         if e["id"] == expenseID:
-            del expenses[i]
+            del expenses[e]
             saveExpenses(expenses)
             return e
 
